@@ -36,8 +36,8 @@ def divideConquer(coord,pointOne,pointTwo,eluDist) :
     leftX = coord[:half]
     rightX = coord[half:]
 
-    pointOne,pointTwo,eluDist = closestPairs(leftX,pointOne,pointTwo,eluDist)
-    pointOne,pointTwo,eluDist = closestPairs(rightX,pointOne,pointTwo,eluDist)
+    pointOne,pointTwo,eluDist = divideConquer(leftX,pointOne,pointTwo,eluDist)
+    pointOne,pointTwo,eluDist = divideConquer(rightX,pointOne,pointTwo,eluDist)
     pointOne,pointTwo,eluDist = resultsDC(coord,middle,pointOne,pointTwo,eluDist)
 	
     return (pointOne,pointTwo,eluDist)
