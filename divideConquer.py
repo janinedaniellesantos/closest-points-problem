@@ -45,7 +45,7 @@ def divideConquer(coord,pointOne,pointTwo,eluDist) :
 def resultsDC(coord,midPoint,pointOne,pointTwo,eluDist):
     resultsDC = [] 
     length = len(resultsDC)
-    r,l = midPoint+int(eluDist), midPoint-int(eluDist)
+    r,l = midPoint + int(eluDist), midPoint - int(eluDist)
 
     #for every point in points, find the shortest distance and append those to array
     for x in coord:
@@ -53,13 +53,13 @@ def resultsDC(coord,midPoint,pointOne,pointTwo,eluDist):
             break
         elif l <=x [0] <= r: resultsDC.append(x)
 
-    sY.sort(key = lambda x:x[1]) 
+    resultsDC.sort(key = lambda x:x[1]) 
 
     for x in range (0,length):
         for y in range (x+1, min ((x+7),length)) :
             dist = elucidian(resultsDC[x],resultsDC[y])
             if dist < eluDist :
-                pointOne,pointTwo=resultsDC[x],resultsDC[y]
+                pointOne,pointTwo = resultsDC[x], resultsDC[y]
                 eluDist = dist           
     return (pointOne,pointTwo,eluDist)
 
