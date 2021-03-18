@@ -1,10 +1,20 @@
 import sys
 import math
-#is numpy general library?? 
+import copy
 
+points = []
+pointsList = open(sys.argv[1], "r")
+
+for z in pointsList :
+    z = z.strip()
+    x,y = z.split(',')
+    points.append(x,y)
+
+#finding the distance between two points 
 def elucidian(a,b) :
     return math.sqrt(math.pow((a[0] - b[0]), 2) + math.pow((a[1]-b[1]), 2)) 
 
+#brute force way to find the closest points
 def bruteForce(points) : 
     c = points[0]
     d = points[1] 
@@ -16,11 +26,18 @@ def bruteForce(points) :
                 distance = minDist
                 c = points[i]
                 d = points[j]
-    return distance, c, d
+    return c, d
 
-points = [(1,1), (1,1), (1,100), (5,100)] # this is just for testing #text file = open(sys.argv[1], "r")
+points = [(1,1), (1,1), (10,20), (1,100), (5,100), (6,6)] 
 points.sort()
-a = bruteForce(points)
-print("The closest pair of points are", a)
+print(points)
+c = points[0]
+d = points[1]
+distance = elucidian(points[0], points[1])
+
+bruteForceAnswer = bruteForce(points)
+print("Brute Force Method: The closest pair of points from the list are", bruteForceAnswer)
+
+
 
 
