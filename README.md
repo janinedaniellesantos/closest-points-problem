@@ -7,9 +7,12 @@ https://youtu.be/xOr6LtHqRh8
 This program implements the Divide and Conquer and Direct Approach (brute force) of the Closest Points problem. Also, there is a file in this project that stores 100 points in a file. 
 
 **Comparing the performance of the two implementations.**
-Beginning with my brute force approach, the program shows that I implemented a main for loop that iterates through every single points in the points list (n-1) times and then another nested for loop that iterates through the list and checks for every single point and returns the shortest distance points. Thus making this solution's time complexity = O(n^2) because it is comparing the distances of each pairs before it returns the smallest.
+Beginning with my brute force approach, the program shows that I implemented a main for loop that iterates through every single points in the points list (n-1) times and then another nested for loop that iterates through the list O(n) and checks for every single point and compares two points and returns the shortest distance points. Thus making this solution's T(n) = O(n^2) because it is comparing the distances of each pairs before it returns the smallest.
 
-Next with the divide and conquer approach, although I was unable to get my program working, the way I structured the algorithm was in hopes to acheive finding the closest pair of point in O(nlogn). I based my algorithm off of the one learned in class (Divide and Conquer ppt), first we had to divide the points into two subsets so that half the points are on each side. Then , we were to recursively find the pair of points closest in each of the halves and returning the sets in sorted order. Then we had to merge in O(n) time for the full algorithm to = O(nlogn)
+Next with the divide and conquer approach, the way I structured the algorithm was in hopes to acheive finding the closest pair of point in O(nlogn). I based my algorithm off of the one learned in class (Divide and Conquer ppt). Let's first establish that my program had a points array with all x,y xoordinates. 
+
+We first had to divide the points array into two parts, the first part takes care of points from ppoint[0] to points[n/2] and the second from points[n/2+1] to 
+P[n-1]. After the array was divided in 2 parts, the program uses a divideConquer function that recursively calls itself on first the left half then the right half, this function also uses the resultsDC function wich initializes another array that stores the shortest points from the middle but the resultDC array is filled in O(n) time with a for loop in the resultsDC function. The resultsDC array is sorted in O(nLogn) time and then finds the closes pair of points in O(n) times through the divide and conquer function. So T(n) = 2T(n/2)+O(nLogn) = T(nLognLogn)
 
 **Requirements**
 If you want to run through the command line make sure that python is installed:
